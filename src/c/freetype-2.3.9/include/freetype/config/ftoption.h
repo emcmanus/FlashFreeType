@@ -121,7 +121,7 @@ FT_BEGIN_HEADER
   /* performance-critical functions (e.g. FT_MulFix).  You should only do  */
   /* that to verify that the assembler function works properly, or to      */
   /* execute benchmark tests of the various implementations.               */
-/* #define FT_CONFIG_OPTION_NO_ASSEMBLER */
+ #define FT_CONFIG_OPTION_NO_ASSEMBLER 
 
 
   /*************************************************************************/
@@ -133,7 +133,7 @@ FT_BEGIN_HEADER
   /* Note that if your compiler or CPU is not supported, this will default */
   /* to the standard and portable implementation found in `ftcalc.c'.      */
   /*                                                                       */
-#define FT_CONFIG_OPTION_INLINE_MULFIX
+// #define FT_CONFIG_OPTION_INLINE_MULFIX
 
 
   /*************************************************************************/
@@ -148,7 +148,7 @@ FT_BEGIN_HEADER
   /*                                                                       */
   /*   Define this macro if you want to enable this `feature'.             */
   /*                                                                       */
-#define FT_CONFIG_OPTION_USE_LZW
+// #define FT_CONFIG_OPTION_USE_LZW
 
 
   /*************************************************************************/

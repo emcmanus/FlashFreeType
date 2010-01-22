@@ -1,0 +1,9 @@
+Configure:
+
+LDFLAGS="-emit-llvm" CFLAGS="-emit-llvm" ./configure --prefix="$ALCHEMY_HOME/usr/local/" --without-zlib enable_shared="no" enable_static="yes"
+
+
+
+Notes:
+
+--without-zlib will still build with zlib, using FreeType's internal version.
