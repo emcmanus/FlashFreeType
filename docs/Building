@@ -1,9 +1,16 @@
-Configure:
+# Configure:
 
 LDFLAGS="-emit-llvm" CFLAGS="-emit-llvm" ./configure --prefix="$ALCHEMY_HOME/usr/local/" --without-zlib enable_shared="no" enable_static="yes"
 
+# --without-zlib will still build with zlib, using FreeType's internal version.
+
+# Build:
+
+make all
 
 
-Notes:
+# Install: (Make sure your prefix was correctly set in configure)
 
---without-zlib will still build with zlib, using FreeType's internal version.
+make install
+
+# IMPORTANT: You'll also need to copy .libs/freetype.l.bc library into $ALCHEMY_HOME/usr/lib/

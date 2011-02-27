@@ -1,0 +1,32 @@
+Following along with the instructions in freetypeBaseDir/docs/CUSTOMIZE...
+
+In include/freetype/config/ftoption.h:
+ - disabled all Assembly
+ - enabled gzip
+ - disabled LZW
+
+Didn't touch the modules.cfg file. May need to come back to that eventually.
+
+Next, ran configure with alc-on.
+
+Configure didn't pick up zLib, may have to return to that but for now i'm building anyway.
+
+Ok now that configure has set up most things, let's save a copy of the generated Makefile and fix some issues.
+
+Rather than refactor this as a traditional makefile, let's work within the existing system. Moved ./configure to ./configure-dont-run, and am hand-editing unix-def and unix-cc which contains most of the compiler directives.
+
+make was passing somefile..exe to the compiler. The compiler uses the string before the last dot to name the swc package. The executable extension included a "." when it probably shouldn't have, according to some other source files.
+
+Problems compiling apinames -- a tool used in the build process to extract header files. Had to fix the E_BUILD to remove the extra period.
+
+Still having problems with apinames executable. So I'm hacking unix-cc.mk's $(CCexe) to use the REAL gcc when building that file rather than Alchemy's.
+
+Now having more problems with the build process trying to compile and run executables, due to libtool.
+
+I think the problem is we're currently trying to build a shared library when we really want a static lib. Starting over, this time providing the appropriate parameters for configure. See /docs/Building for the correct configure settings. 
+
+Had to re-correct:
+
+E_BUILD in unix-cc.mk (changed to ".exe", not "..exe")
+Had to clear ANSIFLAGS in unix-cc.mk
+Set CCexe to the native gcc (/usr/bin/gcc) in unix-cc.mk

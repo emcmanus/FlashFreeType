@@ -7,10 +7,3 @@ A Flash port of Freetype2. *Port created by Ed McManus.*
 [http://www.twitter.com/emcmanus](http://www.twitter.com/emcmanus)
 
 **More documentation in `/docs`**
-
-
-## License ##
-
-## Performance ##
-
-## Important Locations ##
